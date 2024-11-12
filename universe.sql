@@ -49,7 +49,7 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.black_hole (
     black_hole_id integer NOT NULL,
-    black_hole_name character varying(15) NOT NULL,
+    name character varying(15) NOT NULL,
     solar_masses integer,
     type character varying(20),
     is_spherical boolean,
@@ -89,7 +89,7 @@ ALTER SEQUENCE public.black_hole_black_hole_id_seq OWNED BY public.black_hole.bl
 
 CREATE TABLE public.galaxy (
     galaxy_id integer NOT NULL,
-    galaxy_name character varying(20) NOT NULL,
+    name character varying(20) NOT NULL,
     galaxy_type character varying(20),
     description text,
     distance_from_earth integer,
@@ -129,7 +129,7 @@ ALTER SEQUENCE public.galaxy_galaxy_id_seq OWNED BY public.galaxy.galaxy_id;
 
 CREATE TABLE public.moon (
     moon_id integer NOT NULL,
-    moon_name character varying(15) NOT NULL,
+    name character varying(15) NOT NULL,
     planet_id integer,
     is_spherical boolean,
     moon_radius integer,
@@ -169,7 +169,7 @@ ALTER SEQUENCE public.moon_moon_id_seq OWNED BY public.moon.moon_id;
 
 CREATE TABLE public.planet (
     planet_id integer NOT NULL,
-    planet_name character varying(15) NOT NULL,
+    name character varying(15) NOT NULL,
     star_id integer,
     planet_type character varying(20),
     planet_mass integer NOT NULL,
@@ -211,7 +211,7 @@ ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
 
 CREATE TABLE public.star (
     star_id integer NOT NULL,
-    star_name character varying(20) NOT NULL,
+    name character varying(20) NOT NULL,
     star_type character varying(20),
     has_life boolean,
     age_in_millions_of_years numeric NOT NULL,
@@ -403,7 +403,7 @@ SELECT pg_catalog.setval('public.star_star_id_seq', 6, true);
 --
 
 ALTER TABLE ONLY public.black_hole
-    ADD CONSTRAINT black_hole_black_hole_name_key UNIQUE (black_hole_name);
+    ADD CONSTRAINT black_hole_black_hole_name_key UNIQUE (name);
 
 
 --
@@ -419,7 +419,7 @@ ALTER TABLE ONLY public.black_hole
 --
 
 ALTER TABLE ONLY public.galaxy
-    ADD CONSTRAINT galaxy_galaxy_name_key UNIQUE (galaxy_name);
+    ADD CONSTRAINT galaxy_galaxy_name_key UNIQUE (name);
 
 
 --
@@ -435,7 +435,7 @@ ALTER TABLE ONLY public.galaxy
 --
 
 ALTER TABLE ONLY public.moon
-    ADD CONSTRAINT moon_moon_name_key UNIQUE (moon_name);
+    ADD CONSTRAINT moon_moon_name_key UNIQUE (name);
 
 
 --
@@ -459,7 +459,7 @@ ALTER TABLE ONLY public.planet
 --
 
 ALTER TABLE ONLY public.planet
-    ADD CONSTRAINT planet_planet_name_key UNIQUE (planet_name);
+    ADD CONSTRAINT planet_planet_name_key UNIQUE (name);
 
 
 --
@@ -475,7 +475,7 @@ ALTER TABLE ONLY public.star
 --
 
 ALTER TABLE ONLY public.star
-    ADD CONSTRAINT star_star_name_key UNIQUE (star_name);
+    ADD CONSTRAINT star_star_name_key UNIQUE (name);
 
 
 --
